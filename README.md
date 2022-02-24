@@ -1,2 +1,2 @@
-# Banco de dados: sql server
+# Banco de dados
  Estudos sobre banco de Dados
