@@ -8,11 +8,12 @@ use caixa_mercado;              /* Usando o banco de dados */
             id_nf integer not null,
             id_item integer not NULL,
             cod_produto integer not null,
-            valor_unit NUMERIC(4,2) not null,
+            valor_unit decimal(4,2) not null,
             quantidade int not null,
             desconto integer default NULL,
             constraint pk_compras primary key (id_nf, id_item, cod_produto)
         );
+
 
 /* Inserindo registros no banco de dados */
         insert into compras
@@ -56,3 +57,17 @@ select * from compras;   /* Selecionando todos os registros da tabela */
         convert(decimal(4,2),(valor_unit - (valor_unit*desconto/100)))  as valor_vendido  
         from compras
         where desconto is not null;
+
+/* c) Altere o valor do desconto (para zero) de todos os registros onde este campo é nulo. */
+
+        update compras set desconto = 0 
+        where desconto is null;
+
+/*d) Pesquise os itens que foram vendidos. As colunas presentes no resultado da consulta são: ID_NF, ID_ITEM, COD_PROD, VALOR_UNIT, VALOR_TOTAL, DESCONTO, VALOR_VENDIDO. OBS: O VALOR_TOTAL é obtido pela fórmula: QUANTIDADE*VALOR_UNIT. O VALOR_VENDIDO é igual a VALOR_UNIT - (VALOR_UNIT*(DESCONTO/100)).*/
+
+        select id_nf, id_item, cod_produto, valor_unit,
+        quantidade * valor_unit as valor_total, desconto, 
+        convert(decimal(5,2),(valor_unit*quantidade - (valor_unit*quantidade*desconto/100))) as valor_vendido
+        from compras;
+
+/* e) Pesquise o valor total das NF e ordene o resultado do maior valor para o menor. As colunas presentes no resultado da consulta são: ID_NF, VALOR_TOTAL. OBS: O VALOR_TOTAL é obtido pela fórmula: ∑ QUANTIDADE * VALOR_UNIT. Agrupe o resultado da consulta por ID_NF.*/
