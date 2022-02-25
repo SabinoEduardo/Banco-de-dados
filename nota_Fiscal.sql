@@ -4,15 +4,15 @@ use caixa_mercado;              /* Usando o banco de dados */
 
 
 /* Crando a tabela compras */
-    create table compras (
-        id_nf integer not null,
-        id_item integer not NULL,
-        cod_produto integer not null,
-        valor_unit NUMERIC(4,2) not null,
-        quantidade int not null,
-        desconto integer default NULL,
-        constraint pk_compras primary key (id_nf, id_item, cod_produto)
-    );
+        create table compras (
+            id_nf integer not null,
+            id_item integer not NULL,
+            cod_produto integer not null,
+            valor_unit NUMERIC(4,2) not null,
+            quantidade int not null,
+            desconto integer default NULL,
+            constraint pk_compras primary key (id_nf, id_item, cod_produto)
+        );
 
 /* Inserindo registros no banco de dados */
         insert into compras
@@ -50,3 +50,9 @@ select * from compras;   /* Selecionando todos os registros da tabela */
         select id_nf, id_item, cod_produto, valor_unit from compras where desconto is null;
 
 
+/* b) Pesquise os itens que foram vendidos com desconto. As colunas presentes no resultado da consulta são: ID_NF, ID_ITEM, COD_PROD, VALOR_UNIT e o VALOR_VENDIDO. OBS: O valor vendido é igual ao VALOR_UNIT -(VALOR_UNIT*(DESCONTO/100)) */
+
+        select id_nf, id_item, cod_produto, valor_unit, 
+        convert(decimal(4,2),(valor_unit - (valor_unit*desconto/100)))  as valor_vendido  
+        from compras
+        where desconto is not null;
