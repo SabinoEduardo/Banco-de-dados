@@ -234,3 +234,4 @@ resultado da consulta por ID_NF.
         from compras
         group by id_nf
         having sum(quantidade) > 3;
+
