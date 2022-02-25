@@ -21,6 +21,7 @@ e) Pesquise o valor total das NF e ordene o resultado do maior valor para o meno
 
 
                                 /* Resolução */
+                                
 create database caixa_mercado;     /* Criando banco de dados */ 
 
 use caixa_mercado;              /* Usando o banco de dados */
