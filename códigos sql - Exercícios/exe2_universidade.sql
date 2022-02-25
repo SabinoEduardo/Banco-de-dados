@@ -1,3 +1,2 @@
 use universidade;
 
-create table 
