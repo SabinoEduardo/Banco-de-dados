@@ -1,4 +1,3 @@
 use universidade;
 
-
-drop database universidade;
+create table 
