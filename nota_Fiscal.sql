@@ -44,3 +44,6 @@ use caixa_mercado;              /* Usando o banco de dados */
 
 select * from compras;   /* Selecionando todos os registros da tabela */
 
+
+a) Pesquise os itens que foram vendidos sem desconto. As colunas presentes no resultado da consulta são: ID_NF, ID_ITEM, COD_PROD E VALOR_UNIT. 
+
