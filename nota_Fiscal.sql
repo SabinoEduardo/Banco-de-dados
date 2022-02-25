@@ -13,7 +13,6 @@ create table compras (
 );
 
 insert into compras
-(id_nf, id_item, cod_produto, valor_unit, quantidade, desconto)
 values 
 (1, 1, 1, 25.00, 10, 5),
 (1, 2, 1, 13.50, 3, default),
