@@ -146,7 +146,3 @@ use universidade; /* Usando o banco de dados */
     (2015010106, 'ENG', 1, 122135, 2015, 90, 8);
    
 
-
-
-   
-    
